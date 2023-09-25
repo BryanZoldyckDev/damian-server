@@ -1,9 +1,9 @@
-import { IsArray, IsIn, IsInt, IsString, MaxLength } from "class-validator";
+import { IsArray, IsString, MaxLength } from "class-validator";
 
 export class CreateCampusDto {
     @MaxLength(6)
-    @IsInt()
-    campus_code: number;
+    @IsString()
+    campus_code: string
 
     @IsString()
     campus_name: string;

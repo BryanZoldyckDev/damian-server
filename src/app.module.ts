@@ -7,6 +7,7 @@ import { CampusModule } from './campus/campus.module';
 import { ModulesModule } from './modules/modules.module';
 import { AttendanceCategoriesModule } from './attendance_categories/attendance_categories.module';
 import { UserCategoriesModule } from './user_categories/user_categories.module';
+import { CommonModule } from './common/common.module';
 
 
 @Module({
@@ -34,7 +35,9 @@ import { UserCategoriesModule } from './user_categories/user_categories.module';
 
     AttendanceCategoriesModule,
 
-    UserCategoriesModule
+    UserCategoriesModule,
+
+    CommonModule
    ],
 })
 export class AppModule {}

@@ -5,10 +5,10 @@ export class Campus {
     @PrimaryGeneratedColumn('uuid')
     campus_id: string;
 
-    @Column('integer', {
+    @Column('text', {
         unique: true,
     })
-    campus_code: number;
+    campus_code: string;
 
     @Column('text')
     campus_name: string;
@@ -17,7 +17,8 @@ export class Campus {
     campus_location: string;
 
     @Column('text', {
-        array: true
+        array: true,
+        default: []
     })
     attention_day: string[];
 }

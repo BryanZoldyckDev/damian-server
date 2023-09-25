@@ -1,7 +1,12 @@
-import { IsIn, IsString } from "class-validator";
+import { IsArray, IsIn, IsOptional, IsString } from "class-validator";
 
 export class CreateAttendanceCategoryDto {
-    @IsIn(['Presente', 'Ausente', 'Desertó'])
+    @IsIn(['Presente', 'Permiso', 'Desertó'])
     @IsString()
     attendance_category: string;
+
+    // @IsString({each: true})
+    // @IsArray()
+    // @IsOptional()
+    // tags: string[]
 }

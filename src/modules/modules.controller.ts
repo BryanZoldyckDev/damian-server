@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseArrayPipe, ParseUUIDPipe } from '@nestjs/common';
 import { ModulesService } from './modules.service';
 import { CreateModuleDto } from './dto/create-module.dto';
 import { UpdateModuleDto } from './dto/update-module.dto';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('modules')
 export class ModulesController {
@@ -13,22 +14,25 @@ export class ModulesController {
   }
 
   @Get()
-  findAll() {
-    return this.modulesService.findAll();
+  findAll( @Query() paginationDto: PaginationDto) {
+    return this.modulesService.findAll(paginationDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.modulesService.findOne(+id);
+  @Get(':term')
+  findOne(@Param('term') term: string) {
+    return this.modulesService.findOne(term);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateModuleDto: UpdateModuleDto) {
-    return this.modulesService.update(+id, updateModuleDto);
+  update(
+    @Param('id', ParseUUIDPipe) id: string, 
+    @Body() updateModuleDto: UpdateModuleDto
+    ) {
+    return this.modulesService.update(id, updateModuleDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.modulesService.remove(+id);
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.modulesService.remove(id);
   }
 }
